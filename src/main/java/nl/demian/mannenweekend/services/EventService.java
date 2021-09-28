@@ -18,7 +18,7 @@ public class EventService {
     private final Map<String, SseEmitter> subscriptions = new HashMap<>();
 
     public SseEmitter subscribe() {
-        final SseEmitter sseEmitter = new SseEmitter();
+        final SseEmitter sseEmitter = new SseEmitter(-1L);
         final User currentUser = this.userService.getCurrentUser();
         sendEvent(sseEmitter, "subscribed", null);
         subscriptions.put(currentUser.getUsername(), sseEmitter);
