@@ -5,6 +5,8 @@ import nl.demian.mannenweekend.domain.User;
 import nl.demian.mannenweekend.exceptions.UsernameAlreadyInUseException;
 import nl.demian.mannenweekend.repositories.UserRepository;
 import nl.demian.mannenweekend.security.SecurityContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +14,11 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserService {
 
+    @Value("${mannenweekend.credits.default-amount}")
+    private final Long credits;
     private final UserRepository userRepository;
     private final SecurityContext securityContext;
 
@@ -23,7 +27,7 @@ public class UserService {
         if (this.userRepository.existsByUsername(user.getUsername())) {
             throw new UsernameAlreadyInUseException(String.format("Username: %s already in use!", user.getUsername()));
         }
-
+        user.setCredits(credits);
         this.userRepository.save(user);
     }
 
