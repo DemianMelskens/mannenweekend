@@ -29,11 +29,11 @@ public class User {
 
     @NotBlank
     @Column(name = "first_name")
-    private String firstName;
+    private String firstname;
 
     @NotBlank
     @Column(name = "last_name")
-    private String lastName;
+    private String lastname;
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;

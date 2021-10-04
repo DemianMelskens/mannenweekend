@@ -3,7 +3,6 @@ package nl.demian.mannenweekend.rest.dtos;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
@@ -17,8 +16,8 @@ public class RegisterDto {
     private String password;
 
     @NotBlank
-    private String firstName;
+    private String firstname;
 
     @NotBlank
-    private String lastName;
+    private String lastname;
 }
