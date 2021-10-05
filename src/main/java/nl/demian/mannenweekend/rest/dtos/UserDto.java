@@ -13,10 +13,10 @@ public class UserDto {
     private Long credits;
 
     @NotBlank
-    private String firstName;
+    private String firstname;
 
     @NotBlank
-    private String lastName;
+    private String lastname;
 
     @NotBlank
     private String role;
