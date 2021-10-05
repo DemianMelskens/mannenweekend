@@ -45,9 +45,8 @@ public class AuthenticationResource {
         return new ResponseEntity<>(new JwtDto(jwt), headers, HttpStatus.OK);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<String> register(@Valid @RequestBody RegisterDto registerDTO) {
+    @PostMapping(value = "/register")
+    public void register(@Valid @RequestBody RegisterDto registerDTO) {
         this.userService.register(this.userMapper.toEntity(registerDTO));
-        return ResponseEntity.ok("User registered successfully!");
     }
 }
